@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CrappyWeatherApi.Controllers
@@ -19,7 +20,8 @@ namespace CrappyWeatherApi.Controllers
         {
             if (++_requestCounter % 3 == 0)
             {
-                throw new Exception();
+                Thread.Sleep(TimeSpan.FromSeconds(10));
+                //throw new Exception();
             }
 
             var rng = new Random();
