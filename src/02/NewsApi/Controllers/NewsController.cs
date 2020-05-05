@@ -16,12 +16,12 @@ namespace NewsApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<News>> Get()
+        public async Task<ActionResult<News>> Get(int id)
         {
             var news = new News()
             {
                 WorldNews = "Hello World!",
-                WeatherForecast = await _apiClient.Get()
+                WeatherForecast = await _apiClient.Get(id)
             };
 
             return Ok(news);
