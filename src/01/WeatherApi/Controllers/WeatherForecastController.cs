@@ -16,16 +16,50 @@ namespace CrappyWeatherApi.Controllers
         };
 
         [HttpGet]
-        public string Get()
+        public string Get(int id)
         {
+
+            #region Case 1
+
             if (++_requestCounter % 3 == 0)
             {
-                Thread.Sleep(TimeSpan.FromSeconds(10));
-                //throw new Exception();
+                throw new NotImplementedException();
             }
 
-            var rng = new Random();
-            return Summaries[rng.Next(Summaries.Length)];
+            return Summaries[0];
+
+            #endregion
+
+            #region Case 2
+
+            //Thread.Sleep(TimeSpan.FromSeconds(5));
+            //return Summaries[1];
+
+            #endregion
+
+            #region Case 3
+
+            //throw new NotImplementedException();
+
+            #endregion
+
+            #region Case 4
+
+            //Thread.Sleep(TimeSpan.FromSeconds(3));
+
+            //return Summaries[id];
+
+            #endregion
         }
+
+        #region Case 3
+
+        [HttpPost]
+        public string Post()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

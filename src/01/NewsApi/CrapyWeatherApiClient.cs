@@ -13,9 +13,22 @@ namespace NewsApi
             _httpClient = httpClient;
         }
 
-        public async Task<string> Get()
+        public async Task<string> Get(int id)
         {
-            var response = await _httpClient.GetAsync("weatherforecast");
+            var response = await _httpClient.GetAsync($"weatherforecast?id={id}");
+
+            var responseString = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                return responseString;
+            }
+
+            throw new Exception(responseString);
+        }
+
+        public async Task<string> Post()
+        {
+            var response = await _httpClient.PostAsync("weatherforecast", null);
 
             var responseString = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
